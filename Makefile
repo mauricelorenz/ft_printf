@@ -1,12 +1,8 @@
 NAME =		libftprintf.a
 
-SRC =		
-
-SRC_BONUS =	
+SRC =		ft_printf.c
 
 OBJ =		$(SRC:.c=.o)
-
-OBJ_BONUS =	$(SRC_BONUS:.c=.o)
 
 CC =		cc
 
@@ -17,21 +13,15 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			ar rcs $(NAME) $(OBJ)
 
-bonus:		.bonus
-
-.bonus:		$(OBJ) $(OBJ_BONUS)
-			ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
-			@touch .bonus
-
 %.o:		%.c
 			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			rm -f $(OBJ) $(OBJ_BONUS)
+			rm -f $(OBJ)
 
 fclean:		clean
-			rm -f $(NAME) .bonus
+			rm -f $(NAME)
 
 re:			fclean all
 
-.PHONY:		all bonus clean fclean re
+.PHONY:		all clean fclean re
