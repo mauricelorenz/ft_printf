@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:45:55 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/29 20:13:13 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/29 20:16:49 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libftprintf.h"
 
 static int	handle_format(const char c, va_list args);
-static int	handle_escape(const char c);
 
 int	ft_printf(const char *str, ...)
 {
@@ -26,12 +25,6 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%')
 		{
 			if (handle_format(*(str + 1), args))
-				return (va_end(args), 1);
-			str = str + 2;
-		}
-		else if (*str == '\\')
-		{
-			if (handle_escape(*(str + 1)))
 				return (va_end(args), 1);
 			str = str + 2;
 		}
@@ -62,28 +55,5 @@ static int	handle_format(const char c, va_list args)
 	// // toupper(puthex lower)
 	else if (c == '%')
 		return (ft_putchar_fd('%', 1), 0);
-	return (1);
-}
-
-static int	handle_escape(const char c)
-{
-	if (c == '\\')
-		return (ft_putchar_fd('\\', 1), 0);
-	if (c == '\"')
-		return (ft_putchar_fd('\"', 1), 0);
-	if (c == 'a')
-		return (ft_putchar_fd('\a', 1), 0);
-	else if (c == 'b')
-		return (ft_putchar_fd('\b', 1), 0);
-	else if (c == 't')
-		return (ft_putchar_fd('\t', 1), 0);
-	else if (c == 'n')
-		return (ft_putchar_fd('\n', 1), 0);
-	else if (c == 'v')
-		return (ft_putchar_fd('\v', 1), 0);
-	else if (c == 'f')
-		return (ft_putchar_fd('\f', 1), 0);
-	else if (c == 'r')
-		return (ft_putchar_fd('\r', 1), 0);
 	return (1);
 }
