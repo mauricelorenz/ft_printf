@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:59:57 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/29 18:19:39 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/19 21:19:29 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/19 22:11:15 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
