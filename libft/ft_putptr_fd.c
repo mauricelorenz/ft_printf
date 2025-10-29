@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:59:57 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 00:31:08 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/29 23:20:35 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 00:47:38 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_puthex_fd(unsigned int n, int fd, int upper);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putptr_fd(void *ptr, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putunbr_fd(unsigned int n, int fd);
-#endif
+static void	putptr_hex(unsigned long n, int fd);
+
+void	ft_putptr_fd(void *ptr, int fd)
+{
+	unsigned long	n;
+
+	n = (unsigned long)ptr;
+	write(fd, "0x", 2);
+	putptr_hex(n, fd);
+}
+
+static void	putptr_hex(unsigned long n, int fd)
+{
+	if (n >= 16)
+		putptr_hex(n / 16, fd);
+	if ((n % 16) >= 10)
+		n = n % 16 - 10 + 'a';
+	else
+		n = n % 16 + '0';
+	write(fd, &n, 1);
+}

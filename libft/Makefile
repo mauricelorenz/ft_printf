@@ -1,7 +1,9 @@
 NAME =		libft.a
 
 SRC =		ft_putchar_fd.c \
+			ft_puthex_fd.c \
 			ft_putnbr_fd.c \
+			ft_putptr_fd.c \
 			ft_putstr_fd.c \
 			ft_putunbr_fd.c
 
