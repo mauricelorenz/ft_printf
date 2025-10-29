@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:45:55 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/29 20:16:49 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/30 00:33:33 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static int	handle_format(const char c, va_list args)
 		return (ft_putchar_fd(va_arg(args, int), 1), 0);
 	else if (c == 's')
 		return (ft_putstr_fd(va_arg(args, char *), 1), 0);
-	// else if (c == 'p')
-	// // puthex adress value
+	else if (c == 'p')
+		return (ft_putptr_fd(va_arg(args, void *), 1), 0);
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_fd(va_arg(args, int), 1), 0);
 	else if (c == 'u')
 		return (ft_putunbr_fd(va_arg(args, unsigned int), 1), 0);
-	// else if (c == 'x')
-	// // puthex lower
-	// else if (c == 'X')
-	// // toupper(puthex lower)
+	else if (c == 'x')
+		return (ft_puthex_fd(va_arg(args, int), 1, 0), 0);
+	else if (c == 'X')
+		return (ft_puthex_fd(va_arg(args, int), 1, 1), 0);
 	else if (c == '%')
 		return (ft_putchar_fd('%', 1), 0);
 	return (1);
