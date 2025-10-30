@@ -6,11 +6,11 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 21:38:54 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 16:31:15 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/30 18:13:44 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_count(int n)
 {

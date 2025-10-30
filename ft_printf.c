@@ -6,11 +6,10 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:45:55 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 16:29:55 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/30 18:11:28 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 static int	handle_format(const char c, va_list *args);

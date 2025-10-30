@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_count.c                                  :+:      :+:    :+:   */
+/*   ft_putchar_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 21:31:39 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 16:46:39 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/19 21:19:29 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 18:13:35 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putstr_count(char *s)
+int	ft_putchar_count(char c)
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (write(1, "(null)", 6), 6);
-	while (*s)
-	{
-		write(1, s, 1);
-		s++;
-		i++;
-	}
-	return (i);
+	write(1, &c, 1);
+	return (1);
 }

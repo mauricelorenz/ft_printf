@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putunbr_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:59:57 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 15:26:10 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/29 19:26:48 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 18:13:53 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-int		ft_putchar_count(char c);
-int		ft_puthex_count(unsigned int n, int upper);
-int		ft_putnbr_count(int n);
-int		ft_putptr_count(void *ptr);
-int		ft_putstr_count(char *s);
-int		ft_putunbr_count(unsigned int n);
-#endif
+int	ft_putunbr_count(unsigned int n)
+{
+	int	i;
+
+	i = 0;
+	if (n >= 10)
+		i += ft_putunbr_count(n / 10);
+	n = n % 10 + '0';
+	write(1, &n, 1);
+	return (i + 1);
+}

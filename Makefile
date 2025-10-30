@@ -1,8 +1,12 @@
 NAME =		libftprintf.a
 
-LIBFT =		./libft/libft.a
-
-SRC =		ft_printf.c
+SRC =		ft_printf.c \
+			ft_putchar_count.c \
+			ft_puthex_count.c \
+			ft_putnbr_count.c \
+			ft_putptr_count.c \
+			ft_putstr_count.c \
+			ft_putunbr_count.c
 
 OBJ =		$(SRC:.c=.o)
 
@@ -13,8 +17,6 @@ CFLAGS =	-Wall -Wextra -Werror
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-			$(MAKE) -C ./libft
-			cp $(LIBFT) $(NAME)
 			ar rcs $(NAME) $(OBJ)
 
 %.o:		%.c
@@ -22,11 +24,9 @@ $(NAME):	$(OBJ)
 
 clean:
 			rm -f $(OBJ)
-			$(MAKE) -C ./libft clean
 
 fclean:		clean
 			rm -f $(NAME)
-			$(MAKE) -C ./libft fclean
 
 re:			fclean all
 
