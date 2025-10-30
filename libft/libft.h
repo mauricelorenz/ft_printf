@@ -6,7 +6,7 @@
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:59:57 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 00:31:08 by mlorenz          ###   ########.fr       */
+/*   Updated: 2025/10/30 15:26:10 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd);
-void	ft_puthex_fd(unsigned int n, int fd, int upper);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putptr_fd(void *ptr, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putunbr_fd(unsigned int n, int fd);
+int		ft_putchar_count(char c);
+int		ft_puthex_count(unsigned int n, int upper);
+int		ft_putnbr_count(int n);
+int		ft_putptr_count(void *ptr);
+int		ft_putstr_count(char *s);
+int		ft_putunbr_count(unsigned int n);
 #endif

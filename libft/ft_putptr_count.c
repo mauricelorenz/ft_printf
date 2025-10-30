@@ -1,29 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putptr_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/30 00:27:32 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/30 00:31:51 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/29 23:20:35 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 16:41:19 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puthex_fd(unsigned int n, int fd, int upper)
+static int	putptr_hex(unsigned long n);
+
+int	ft_putptr_count(void *ptr)
 {
+	int				i;
+	unsigned long	n;
+
+	i = 0;
+	n = (unsigned long)ptr;
+	if (n == 0)
+		return (write(1, "(nil)", 5), 5);
+	write(1, "0x", 2);
+	i += 2;
+	i += putptr_hex(n);
+	return (i);
+}
+
+static int	putptr_hex(unsigned long n)
+{
+	int	i;
+
+	i = 0;
 	if (n >= 16)
-		ft_puthex_fd(n / 16, fd, upper);
+		i += putptr_hex(n / 16);
 	if ((n % 16) >= 10)
-	{
-		if (upper)
-			n = n % 16 - 10 + 'A';
-		else
-			n = n % 16 - 10 + 'a';
-	}
+		n = n % 16 - 10 + 'a';
 	else
 		n = n % 16 + '0';
-	write(fd, &n, 1);
+	write(1, &n, 1);
+	return (i + 1);
 }

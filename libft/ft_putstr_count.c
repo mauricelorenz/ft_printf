@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 19:26:48 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/29 19:27:56 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/19 21:31:39 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 16:46:39 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putunbr_fd(unsigned int n, int fd)
+int	ft_putstr_count(char *s)
 {
-	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
-	n = n % 10 + '0';
-	write(fd, &n, 1);
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (write(1, "(null)", 6), 6);
+	while (*s)
+	{
+		write(1, s, 1);
+		s++;
+		i++;
+	}
+	return (i);
 }

@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putunbr_count.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlorenz <mlorenz@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 21:38:54 by mlorenz           #+#    #+#             */
-/*   Updated: 2025/10/19 22:11:24 by mlorenz          ###   ########.fr       */
+/*   Created: 2025/10/29 19:26:48 by mlorenz           #+#    #+#             */
+/*   Updated: 2025/10/30 16:11:50 by mlorenz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putunbr_count(unsigned int n)
 {
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n = (-n);
-	}
+	int	i;
+
+	i = 0;
 	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
+		i += ft_putunbr_count(n / 10);
 	n = n % 10 + '0';
-	write(fd, &n, 1);
+	write(1, &n, 1);
+	return (i + 1);
 }

@@ -1,11 +1,11 @@
 NAME =		libft.a
 
-SRC =		ft_putchar_fd.c \
-			ft_puthex_fd.c \
-			ft_putnbr_fd.c \
-			ft_putptr_fd.c \
-			ft_putstr_fd.c \
-			ft_putunbr_fd.c
+SRC =		ft_putchar_count.c \
+			ft_puthex_count.c \
+			ft_putnbr_count.c \
+			ft_putptr_count.c \
+			ft_putstr_count.c \
+			ft_putunbr_count.c
 
 OBJ =		$(SRC:.c=.o)
 
